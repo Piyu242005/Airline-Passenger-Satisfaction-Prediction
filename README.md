@@ -1,189 +1,83 @@
 # ✈️ Airline Passenger Satisfaction Prediction
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![ML](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange.svg)
-![XGBoost](https://img.shields.io/badge/XGBoost-Gradient%20Boosting-green.svg)
-![Status](https://img.shields.io/badge/Status-Complete-success.svg)
+### Explainable Machine Learning for Airline Customer Experience
 
-A comprehensive machine learning project to predict airline passenger satisfaction based on flight experience data including service quality, seat comfort, delays, and other factors.
+This project predicts whether an airline passenger is **satisfied or dissatisfied** and analyzes the service factors associated with passenger experience.
 
-## 📋 Project Overview
+> **Purpose:** I created this project to demonstrate a complete Data Science workflow—from EDA and feature engineering to model comparison, explainability, segmentation and business recommendations.
 
-Airlines want to understand what factors influence passenger satisfaction to improve customer experience and reduce dissatisfaction rates. This project builds a predictive model that:
+## 🎯 Business Questions
 
-- Predicts whether a passenger is **Satisfied** or **Dissatisfied**
-- Identifies key factors affecting customer satisfaction
-- Performs **Customer Segmentation Analysis** for targeted improvements
-- Analyzes **Delay Impact** on passenger satisfaction
-- Provides actionable business recommendations
+- Which services influence satisfaction most?
+- How do delays affect dissatisfaction?
+- Which passenger segments have different satisfaction patterns?
+- Can ML reliably identify dissatisfied passengers?
 
-## 📊 Dataset
+## 🔄 Workflow
 
-- **Source:** [Kaggle - Airline Passenger Satisfaction](https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction)
-- **Training samples:** ~104,000 records
-- **Test samples:** ~26,000 records
-- **Features:** 25 columns including:
-  - Passenger demographics (Age, Gender)
-  - Flight information (Class, Type of Travel, Flight Distance)
-  - Service ratings (Wifi, Seat Comfort, Entertainment, Food, Cleanliness, etc.)
-  - Delay information (Departure/Arrival delays)
-
-## 🔧 Project Workflow
-
-```
-1. Problem Definition
-       ↓
-2. Data Understanding
-       ↓
-3. Data Preprocessing
-       ↓
-4. Exploratory Data Analysis (EDA)
-       ↓
-5. Feature Engineering
-       ↓
-6. Train-Test Split (70-30)
-       ↓
-7. Model Building
-       ↓
-8. Model Evaluation
-       ↓
-9. Hyperparameter Tuning
-       ↓
-10. Delay Impact Analysis
-       ↓
-11. Customer Segmentation Analysis
-       ↓
-12. Key Insights & Recommendations
-       ↓
-13. Model Deployment (Save Artifacts)
+```text
+Data → Cleaning → EDA → Feature Engineering → Model Comparison
+     → Hyperparameter Tuning → Evaluation → Explainability
+     → Segmentation → Business Recommendations
 ```
 
-## 🤖 Models Implemented
+## 🤖 Models
 
-| Model | Accuracy | F1-Score | ROC-AUC |
-|-------|----------|----------|---------|
-| Logistic Regression | ~87% | ~0.85 | ~0.93 |
-| Random Forest | ~96% | ~0.95 | ~0.99 |
-| XGBoost Enhanced | **96.32%** | **0.9568** | **0.9949** |
+- Logistic Regression
+- Random Forest
+- XGBoost
 
-**Best Model:** XGBoost Enhanced (with GridSearchCV optimization)
+The repository's current notebook/README reports **XGBoost Enhanced** as the strongest model. Re-run the notebook to reproduce current metrics rather than treating historical metrics as permanent.
 
-## 🏆 Key Findings
+## 📊 Analysis
 
-### Top Factors Affecting Satisfaction:
-1. **Online Boarding** - Most important predictor
-2. **Inflight WiFi Service** - Strong impact on satisfaction
-3. **Type of Travel** - Business vs Personal travel
-4. **Class** - Business class has higher satisfaction
-5. **Inflight Entertainment** - Key service differentiator
+Includes:
 
-### Delay Impact Analysis:
-- **Dissatisfied passengers** experience ~4 minutes more delay on average
-- **No Delay:** 54.2% dissatisfaction rate
-- **>60 min Delay:** 64.3% dissatisfaction rate
-- Delays significantly correlate with increased dissatisfaction
+- Service-rating analysis
+- Passenger/class/travel segmentation
+- Delay impact analysis
+- Feature importance
+- SHAP/model explainability
+- ROC-AUC, F1 and confusion-matrix evaluation
 
-### Customer Segmentation Insights:
-| Segment | Satisfaction Rate | Population % |
-|---------|------------------|--------------|
-| Business Premium | 72.02% | 45.72% |
-| Business Economy | 29.62% | 19.50% |
-| Standard Economy | 18.43% | 12.81% |
-| Leisure Premium | 12.24% | 2.08% |
-| Young Leisure | 10.27% | 10.52% |
-| Senior Leisure | 9.95% | 9.38% |
+## 💡 Business Insights
 
-### Business Insights:
-- 📱 **Digital Services Matter:** Online boarding and WiFi are top predictors
-- ✈️ **Business Travelers:** Higher expectations, prioritize efficiency
-- ⏱️ **Delays Hurt:** Departure delays significantly impact dissatisfaction
-- 🛋️ **Comfort Counts:** Seat comfort and legroom affect experience
+The analysis focuses on digital boarding, Wi-Fi, travel type, class, entertainment, comfort and delay management as actionable experience areas.
 
-## 📁 Project Structure
+## 🚀 Run
 
-```
-├── Airline satisfaction ML.ipynb    # Main ML notebook
-├── train.csv                        # Training dataset
-├── test.csv                         # Test dataset
-├── optimized_rf_model.pkl           # Saved model
-├── label_encoders.pkl               # Encoding artifacts
-├── scaler.pkl                       # Scaling artifacts
-├── feature_columns.pkl              # Feature list
-└── README.md                        # Project documentation
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn xgboost shap
+git clone https://github.com/Piyu242005/Airline-Passenger-Satisfaction-Prediction.git
+cd Airline-Passenger-Satisfaction-Prediction
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost shap joblib
 ```
 
-### Run the Project
-1. Clone the repository
-2. Place `train.csv` and `test.csv` in the project folder
-3. Open `Airline satisfaction ML.ipynb` in Jupyter Notebook
-4. Run all cells sequentially
+Open the main Jupyter notebook and run the cells sequentially.
 
-## 📈 Visualizations
+## 📁 Structure
 
-The notebook includes:
-- Satisfaction distribution (bar & pie charts)
-- Age distribution analysis
-- Satisfaction by Class and Travel Type
-- Service ratings distributions
-- Correlation heatmap
-- **Delay Impact Analysis** charts
-- **Customer Segmentation** visualizations
-- Feature importance chart
-- ROC curves and Confusion matrices
+```text
+Airline satisfaction ML.ipynb   # Main analysis
+train.csv                       # Training data
+test.csv                        # Test data
+*.pkl                           # Model/processing artifacts
+README.md
+```
 
-## 💡 Business Recommendations
+## ⚠️ Limitations
 
-1. **🌐 Online Services Improvement**
-   - Enhance online boarding experience (highest importance)
-   - Improve inflight WiFi service quality
-   - Simplify ease of online booking
+- Historical airline data does not prove causal relationships.
+- Dataset performance may not generalize to another airline or time period.
+- A production version should expose the model through an API and monitor drift.
 
-2. **🛋️ In-Flight Comfort**
-   - Upgrade seat comfort, especially in Economy class
-   - Improve inflight entertainment options
-   - Enhance legroom service
+## 🗺️ Roadmap
 
-3. **⏱️ Delay Management**
-   - Minimize departure delays (major dissatisfaction factor)
-   - Improve communication during delays
-   - Offer compensation for significant delays
+- [ ] FastAPI prediction service
+- [ ] Interactive Streamlit dashboard
+- [ ] Reproducible training pipeline
+- [ ] Model monitoring
+- [ ] Calibration and threshold optimization
 
-4. **👥 Customer Type Focus**
-   - Loyal customers have higher expectations - offer premium services
-   - Business travelers prioritize efficiency - streamline check-in
-   - Personal travelers value entertainment - enhance entertainment options
+## 👨‍💻 Author
 
-5. **🎯 Class-Specific Strategies**
-   - Economy: Focus on basic comfort and cleanliness
-   - Business: Premium services and priority boarding
-   - First Class: Personalized experience and exclusive amenities
-
-## 🛠️ Technologies Used
-
-- **Python 3.8+**
-- **Pandas** - Data manipulation
-- **NumPy** - Numerical operations
-- **Matplotlib & Seaborn** - Visualization
-- **Scikit-learn** - ML algorithms
-- **XGBoost** - Gradient boosting
-- **SHAP** - Model interpretability
-- **Joblib/Pickle** - Model serialization
-
-## 📝 Author
-
-**Piyush Ramteke**
-
-## 📄 License
-
-This project is for educational purposes as part of an internship project.
-
----
-
-⭐ If you found this project helpful, please give it a star!
+**Piyush Ramteke** — Data Scientist | AI/ML Engineer
